@@ -16,7 +16,7 @@ ipsec pki --self --in ca.key.pem --dn "CN=VPN Root CA" --ca --outform pem > ca.c
 echo "🔐 Buat sertifikat server..."
 ipsec pki --gen --outform pem > server.key.pem
 ipsec pki --pub --in server.key.pem | ipsec pki --issue --cacert ca.cert.pem --cakey ca.key.pem \
---dn "CN=$VPN_SERVER_IP" --san "$VPN_SERVER_IP" --flag serverAuth --flag ikeIntermediate --outform pem > server.cert.pem
+    --dn "CN=$VPN_SERVER_IP" --san "$VPN_SERVER_IP" --flag serverAuth --flag ikeIntermediate --outform pem > server.cert.pem
 
 echo "📁 Pindahkan sertifikat ke direktori IPsec..."
 cp ca.cert.pem /etc/ipsec.d/certs/
@@ -24,7 +24,7 @@ cp server.cert.pem /etc/ipsec.d/certs/
 cp server.key.pem /etc/ipsec.d/private/
 
 echo "⚙️ Konfigurasi IPsec..."
-cat > /etc/ipsec.conf <<EOF
+cat > /etc/ipsec.conf << EOF
 config setup
   charondebug="ike 1, knl 1, cfg 0"
 
@@ -52,7 +52,7 @@ conn ikev2-vpn
 EOF
 
 echo "🔐 Tambahkan user VPN ke ipsec.secrets..."
-cat > /etc/ipsec.secrets <<EOF
+cat > /etc/ipsec.secrets << EOF
 : RSA server.key.pem
 $VPN_USER : EAP "$VPN_PASS"
 EOF

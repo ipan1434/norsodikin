@@ -27,7 +27,7 @@ themes=(
 )
 
 theme_configs=(
-"background: #1e1e2e
+    "background: #1e1e2e
 foreground: #cdd6f4
 cursor: #f5e0dc
 color0: #181825
@@ -47,7 +47,7 @@ color13: #c6a0f6
 color14: #8bd5ca
 color15: #ffffff"
 
-"background: #eff1f5
+    "background: #eff1f5
 foreground: #4c4f69
 cursor: #d20f39
 color0: #e6e9ef
@@ -67,7 +67,7 @@ color13: #8839ef
 color14: #179299
 color15: #ffffff"
 
-"background: #2d2a2e
+    "background: #2d2a2e
 foreground: #fcfcfa
 cursor: #ff6188
 color0: #2d2a2e
@@ -87,7 +87,7 @@ color13: #ab9df2
 color14: #78dce8
 color15: #fcfcfa"
 
-"background: #191724
+    "background: #191724
 foreground: #e0def4
 cursor: #ebbcba
 color0: #1f1d2e
@@ -107,7 +107,7 @@ color13: #c4a7e7
 color14: #528a7f
 color15: #ffffff"
 
-"background: #2d353b
+    "background: #2d353b
 foreground: #d3c6aa
 cursor: #a7c080
 color0: #262c2e
@@ -127,7 +127,7 @@ color13: #d699b6
 color14: #83c092
 color15: #ffffff"
 
-"background: #fdf6e3
+    "background: #fdf6e3
 foreground: #586e75
 cursor: #cb4b16
 color0: #eee8d5
@@ -147,7 +147,7 @@ color13: #6c71c4
 color14: #93a1a1
 color15: #002b36"
 
-"background: #1b2b34
+    "background: #1b2b34
 foreground: #d8dee9
 cursor: #5fb3b3
 color0: #1c3657
@@ -167,7 +167,7 @@ color13: #c594c5
 color14: #5fb3b3
 color15: #ffffff"
 
-"background: #292d3e
+    "background: #292d3e
 foreground: #a6accd
 cursor: #bb80b3
 color0: #232530
@@ -187,7 +187,7 @@ color13: #c792ea
 color14: #89ddff
 color15: #ffffff"
 
-"background: #1c1e26
+    "background: #1c1e26
 foreground: #e6e1cf
 cursor: #e95678
 color0: #16161e
@@ -207,7 +207,7 @@ color13: #ee64ac
 color14: #29d398
 color15: #ffffff"
 
-"background: #2e3440
+    "background: #2e3440
 foreground: #d8dee9
 cursor: #88c0d0
 color0: #3b4252
@@ -227,7 +227,7 @@ color13: #b48ead
 color14: #8fbcbb
 color15: #eceff4"
 
-"background: #282a36
+    "background: #282a36
 foreground: #f8f8f2
 cursor: #ff79c6
 color0: #21222c
@@ -247,7 +247,7 @@ color13: #ff92df
 color14: #a4ffff
 color15: #ffffff"
 
-"background: #1a1b26
+    "background: #1a1b26
 foreground: #a9b1d6
 cursor: #7aa2f7
 color0: #16161e
@@ -267,7 +267,7 @@ color13: #ad8ee6
 color14: #89ddff
 color15: #ffffff"
 
-"background: #2b213a
+    "background: #2b213a
 foreground: #ff7edb
 cursor: #ffcc00
 color0: #16161e
@@ -287,7 +287,7 @@ color13: #ff00ff
 color14: #00ffff
 color15: #ffffff"
 
-"background: #282828
+    "background: #282828
 foreground: #ebdbb2
 cursor: #fabd2f
 color0: #1d2021
@@ -307,7 +307,7 @@ color13: #d3869b
 color14: #8ec07c
 color15: #ebdbb2"
 
-"background: #fbf1c7
+    "background: #fbf1c7
 foreground: #3c3836
 cursor: #d79921
 color0: #fbf1c7
@@ -330,13 +330,13 @@ color15: #3c3836"
 
 echo "Pilih tema untuk Termux:"
 for i in "${!themes[@]}"; do
-    echo "$((i+1)). ${themes[$i]}"
+    echo "$((i + 1)). ${themes[$i]}"
 done
 
 read -p "Masukkan nomor tema: " choice
 
 if [[ $choice -ge 1 && $choice -le ${#themes[@]} ]]; then
-    selected_theme="${theme_configs[$((choice-1))]}"
+    selected_theme="${theme_configs[$((choice - 1))]}"
     apply_theme "$selected_theme"
 else
     echo "Pilihan tidak valid!"

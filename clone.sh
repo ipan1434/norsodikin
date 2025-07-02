@@ -46,10 +46,8 @@ function host_repository() {
     local COMMIT_MESSAGE=${3:-"initial"}
 
     rm -rf .git
-    git config --global user.email "support@hacker.ltd"
-    git config --global user.name "hacker"
-    git init
-
+    git config --global user.email "support@norsodikin.ltd"
+    git config --global user.name "ɴᴏʀ sᴏᴅɪᴋɪɴ"
     git add .
     git commit -m "$COMMIT_MESSAGE"
     git branch -M main

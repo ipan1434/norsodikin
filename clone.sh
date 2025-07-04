@@ -21,10 +21,16 @@ function clone_repository() {
     local COMMIT_MESSAGE=${4:-"initial"}
 
     echo "Mengkloning repositori..."
-    git clone "$REPO_CLONE" || { echo "Gagal mengkloning repositori."; exit 1; }
-    
+    git clone "$REPO_CLONE" || {
+        echo "Gagal mengkloning repositori."
+        exit 1
+    }
+
     local DIR_NAME=$(basename "$REPO_CLONE" .git)
-    cd "$DIR_NAME" || { echo "Gagal masuk ke direktori repositori."; exit 1; }
+    cd "$DIR_NAME" || {
+        echo "Gagal masuk ke direktori repositori."
+        exit 1
+    }
 
     rm -rf .git
     git init
@@ -40,7 +46,10 @@ function clone_repository() {
     git remote add origin "https://$GITHUB_TOKEN@$REPO_REMOTE_CLEAN"
 
     echo "Mendorong perubahan ke repositori remote..."
-    git push -u origin main || { echo "Gagal mendorong perubahan."; exit 1; }
+    git push -u origin main || {
+        echo "Gagal mendorong perubahan."
+        exit 1
+    }
 }
 
 function host_repository() {
@@ -64,7 +73,10 @@ function host_repository() {
     git remote add origin "https://$GITHUB_TOKEN@$REPO_REMOTE_CLEAN"
 
     echo "Mendorong perubahan ke repositori remote..."
-    git push -u origin main || { echo "Gagal mendorong perubahan."; exit 1; }
+    git push -u origin main || {
+        echo "Gagal mendorong perubahan."
+        exit 1
+    }
 }
 
 function handle_user_choice() {

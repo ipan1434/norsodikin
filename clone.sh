@@ -20,24 +20,27 @@ function clone_repository() {
     local GITHUB_TOKEN=$3
     local COMMIT_MESSAGE=${4:-"initial"}
 
-    git clone "$REPO_CLONE"
-    cd "$(basename "$REPO_CLONE" .git)"
+    echo "Mengkloning repositori..."
+    git clone "$REPO_CLONE" || { echo "Gagal mengkloning repositori."; exit 1; }
+    
+    local DIR_NAME=$(basename "$REPO_CLONE" .git)
+    cd "$DIR_NAME" || { echo "Gagal masuk ke direktori repositori."; exit 1; }
 
     rm -rf .git
-    git config --global user.email "support@hacker.ltd"
-    git config --global user.name "hacker"
     git init
+
+    git config user.email "support@hacker.ltd"
+    git config user.name "hacker"
 
     git add .
     git commit -m "$COMMIT_MESSAGE"
     git branch -M main
 
     REPO_REMOTE_CLEAN="${REPO_REMOTE#https://}"
+    git remote add origin "https://$GITHUB_TOKEN@$REPO_REMOTE_CLEAN"
 
-    git remote add origin "$REPO_REMOTE"
-    git remote set-url origin "https://$GITHUB_TOKEN@$REPO_REMOTE_CLEAN"
-
-    git push -u origin main
+    echo "Mendorong perubahan ke repositori remote..."
+    git push -u origin main || { echo "Gagal mendorong perubahan."; exit 1; }
 }
 
 function host_repository() {
@@ -45,19 +48,23 @@ function host_repository() {
     local GITHUB_TOKEN=$2
     local COMMIT_MESSAGE=${3:-"initial"}
 
-    rm -rf .git
-    git config --global user.email "support@norsodikin.ltd"
-    git config --global user.name "ɴᴏʀ sᴏᴅɪᴋɪɴ"
+    if [ ! -d ".git" ]; then
+        rm -rf .git
+        git init
+    fi
+
+    git config user.email "support@norsodikin.ltd"
+    git config user.name "ɴᴏʀ sᴏᴅɪᴋɪɴ"
+
     git add .
     git commit -m "$COMMIT_MESSAGE"
     git branch -M main
 
     REPO_REMOTE_CLEAN="${REPO_REMOTE#https://}"
+    git remote add origin "https://$GITHUB_TOKEN@$REPO_REMOTE_CLEAN"
 
-    git remote add origin "$REPO_REMOTE"
-    git remote set-url origin "https://$GITHUB_TOKEN@$REPO_REMOTE_CLEAN"
-
-    git push -u origin main
+    echo "Mendorong perubahan ke repositori remote..."
+    git push -u origin main || { echo "Gagal mendorong perubahan."; exit 1; }
 }
 
 function handle_user_choice() {

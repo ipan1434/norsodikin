@@ -1,6 +1,6 @@
 PROXY_FILE="${1:-proxy.txt}"
 CHECK_URLS="${2:-https://www.google.com}"
-PROXY_URLS=("https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/all.txt")
+PROXY_URLS=("https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/all.txt" "https://raw.githubusercontent.com/dpangestuw/Free-Proxy/refs/heads/main/All_proxies.txt")
 
 function getColor() {
     local color_name=$1

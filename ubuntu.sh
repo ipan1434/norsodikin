@@ -11,7 +11,7 @@ function setup_termux_ubuntu() {
     pkg update && pkg upgrade -y
     pkg install -y proot-distro neofetch
 
-    echo -e "$(generate_random_color)🐧 Menginstal Ubuntu di Termux...$reset"
+    echo -e "$(generate_random_color)🥀 wait yaa sedang mengistall$reset"
     proot-distro install ubuntu
 
     if [ ! -f ~/.bashrc ]; then
@@ -22,7 +22,7 @@ function setup_termux_ubuntu() {
     if ! grep -q "proot-distro login ubuntu" ~/.bashrc; then
         echo -e "clear" >> ~/.bashrc
         echo -e "neofetch" >> ~/.bashrc
-        echo -e "echo -e \"⭐️ \033[38;2;0;255;0mSPECIAL THANKS TO @NorSodikin\033[0m\"" >> ~/.bashrc
+        echo -e "echo -e \"⭐️ \033[38;2;0;255;0mSPECIAL THANKS TO @gbanloy\033[0m\"" >> ~/.bashrc
         echo "proot-distro login ubuntu" >> ~/.bashrc
     fi
 

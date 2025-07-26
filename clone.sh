@@ -35,8 +35,8 @@ function clone_repository() {
     rm -rf .git
     git init
 
-    git config user.email "support@hacker.ltd"
-    git config user.name "hacker"
+    git config user.email "hackertelegram@ipan.id"
+    git config user.name "hacker 18+"
 
     git add .
     git commit -m "$COMMIT_MESSAGE"
@@ -62,8 +62,8 @@ function host_repository() {
         git init
     fi
 
-    git config user.email "support@norsodikin.ltd"
-    git config user.name "ɴᴏʀ sᴏᴅɪᴋɪɴ"
+    git config user.email "flaelva6@gmail.com"
+    git config user.name "ipan1434"
 
     git add .
     git commit -m "$COMMIT_MESSAGE"

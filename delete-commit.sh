@@ -1,5 +1,5 @@
-git config --global user.email "support@norsodikin.ltd"
-git config --global user.name "ɴᴏʀ sᴏᴅɪᴋɪɴ"
+git config --global user.email "flaelva6@gmail.com"
+git config --global user.name "ipan1434"
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
